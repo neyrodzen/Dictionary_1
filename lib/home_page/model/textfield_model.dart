@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 
 import 'api_client/api_client.dart';
 
@@ -16,7 +15,7 @@ class TextFieldModel extends ChangeNotifier {
 }
 
 class SearchModelProvider extends InheritedNotifier {
-  SearchModelProvider({
+  const SearchModelProvider({
     super.key,
     required this.model,
     required super.child,

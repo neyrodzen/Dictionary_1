@@ -15,14 +15,14 @@ class FavoritesList extends StatelessWidget implements ParentList {
 class OfflineList extends StatelessWidget implements ParentList {
   @override
   Widget build(BuildContext context) {
-    return Text('favorites');
+    return Text('List');
   }
 }
 
 class ErrorList extends StatelessWidget implements ParentList {
  @override
   Widget build(BuildContext context) {
-    return Text('favorites');
+    return Text('Error ');
   }
 }
 

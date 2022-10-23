@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'model.dart';
 
 class ModelProvider extends InheritedNotifier {
-  ModelProvider({
+  const ModelProvider({
     super.key,
     required this.model,
     required super.child,

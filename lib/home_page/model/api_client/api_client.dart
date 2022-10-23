@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 
 class ApiClient {
@@ -15,8 +14,9 @@ class ApiClient {
     final json = jsonDecode(str) as Map<String, dynamic>;
     List<dynamic> def = json['def'];
     String translate = 'Error!!!';
-    if (def.isNotEmpty) 
-     translate = def[0]['tr'][0]['text'];
+    if (def.isNotEmpty) {
+      translate = def[0]['tr'][0]['text'];
+    } 
 
     return translate;
   }
