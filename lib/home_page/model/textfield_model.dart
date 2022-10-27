@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'api_client/api_client.dart';
+import '../../data_base/data_base.dart';
+import '../api_client/api_client.dart';
 
 class TextFieldModel extends ChangeNotifier {
-  String enterText = '';
-  String showText = '';
+  String key = '';
+  String value = '';
+  DataBase database = DataBase();
 
-  // Future <String> getTranslate() async {
-  Future<String?> getTranslate() async{
+  Future<String> getTranslate() async {
     ApiClient apiClient = ApiClient();
-    String? translate = await apiClient.getHttp(enterText);
+    String translate = await apiClient.getHttp(key) ?? 'error!!!';
     return translate;
+  }
+@override
+  void notifyListeners() {
   }
 }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'model/model_provider.dart';
-import 'model/parent_list.dart';
+import 'UI/parent_list.dart';
 import 'model/textfield_model.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,26 +13,30 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int indexItem = 0;
-  Widget? listWidget ;
+  Widget? listWidget;
 
   @override
   Widget build(BuildContext context) {
+    TextFieldModel model = TextFieldModel();
+
     void ontapSettings() {
       Navigator.of(context).pushNamed('/settings_page');
       setState(() {});
     }
 
-    void onTapBottom(int index) {
+    Future<void> onTapBottom(int index) async {
       indexItem = index;
       ModelProvider.watch(context)?.model.indexBottomBar = index;
       ParentList list =
           ModelProvider.watch(context)?.model.factoryList() ?? ErrorList();
-     
-      listWidget = list as Widget;
+      if (index == 1) {
+        var listfavorit = await list.makeSome();
+        listWidget = listfavorit;
+      } else if(index ==0){
+        listWidget = list as Widget;
+      }
       setState(() {});
     }
-
-  TextFieldModel model = TextFieldModel();
 
     return Scaffold(
       // floatingActionButton:,
@@ -57,22 +61,20 @@ class _HomePageState extends State<HomePage> {
           minHeight: double.infinity,
           minWidth: double.infinity,
         ),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [
-            Color.fromARGB(255, 184, 148, 190),
-            Color.fromARGB(255, 231, 201, 236)
-          ])),
+        child: ColoredBox(
+          color: Colors.white70,
           child: SingleChildScrollView(
             child: SearchModelProvider(
-              model: model,
-              child: listWidget ?? Center(
-                child: Text('Dictionary',
-                style: TextStyle(
-                  fontSize: 50,
-                  fontStyle: FontStyle.italic,
-                ),))    
-            ),
+                model: model,
+                child: listWidget ??
+                    Center(
+                        child: Text(
+                      'Dictionary',
+                      style: TextStyle(
+                        fontSize: 50,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ))),
           ),
         ),
       ),
@@ -92,7 +94,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
         backgroundColor: Color.fromARGB(255, 108, 30, 244),
-        selectedItemColor: Colors.grey,
+        selectedItemColor: Colors.white70,
         onTap: onTapBottom,
         currentIndex: indexItem,
       ),

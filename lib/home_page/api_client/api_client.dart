@@ -12,8 +12,8 @@ class ApiClient {
     final byteTostring = await responce.transform(utf8.decoder).toList();
     final str = byteTostring.join();
     final json = jsonDecode(str) as Map<String, dynamic>;
-    List<dynamic> def = json['def'];
-    String translate = 'Error!!!';
+    List<dynamic> def = json['def'] ?? <dynamic>[];
+    String translate = ' ';
     if (def.isNotEmpty) {
       translate = def[0]['tr'][0]['text'];
     } 

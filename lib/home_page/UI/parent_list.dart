@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class ParentList {
-}
-
-class FavoritesList extends StatelessWidget implements ParentList {
-
-  
-  @override
-  Widget build(BuildContext context) {
-    return Text('favorites');
-  }
+  Future<Widget> makeSome();
 }
 
 class OfflineList extends StatelessWidget implements ParentList {
@@ -17,12 +9,21 @@ class OfflineList extends StatelessWidget implements ParentList {
   Widget build(BuildContext context) {
     return Text('List');
   }
-}
-
-class ErrorList extends StatelessWidget implements ParentList {
- @override
-  Widget build(BuildContext context) {
-    return Text('Error ');
+  
+  @override
+  Future<Widget> makeSome() {
+    throw UnimplementedError();
   }
 }
 
+class ErrorList extends StatelessWidget implements ParentList {
+  @override
+  Widget build(BuildContext context) {
+    return Text('Error ');
+  }
+  
+  @override
+  Future<Widget> makeSome() {
+    throw UnimplementedError();
+  }
+}

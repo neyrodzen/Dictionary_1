@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'home_page/home_page.dart';
 import 'home_page/model/model.dart';
 import 'home_page/model/model_provider.dart';
 import 'setting_page/setting_page.dart';
 
-void main() {
+void main() async{
+
+  await Hive.initFlutter();
   runApp(MyApp());
 }
 
@@ -26,10 +29,9 @@ class _MyAppState extends State<MyApp> {
       title: 'Dictionary',
       theme: ThemeData(
           colorScheme: const ColorScheme.light(
-        onPrimary: Colors.grey,
+        onPrimary: Colors.white70,
       )),
-      home: ModelProvider(model: model,
-       child: const HomePage()),
+      home: ModelProvider(model: model, child: const HomePage()),
       routes: {
         //'/': (context) => HomePage(),
         '/settings_page': (context) => SettingsPage()

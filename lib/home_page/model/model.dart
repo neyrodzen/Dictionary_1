@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'search_list.dart';
-import 'parent_list.dart';
+import '../UI/favorite_list.dart';
+import '../UI/search_list.dart';
+import '../UI/parent_list.dart';
 
 class ModelOfPage extends ChangeNotifier {
   ModelOfPage(this.indexBottomBar);
