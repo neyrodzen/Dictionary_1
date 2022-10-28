@@ -4,11 +4,46 @@ import 'home_page/home_page.dart';
 import 'home_page/model/model.dart';
 import 'home_page/model/model_provider.dart';
 import 'setting_page/setting_page.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+/////////////
+@pragma('vm:entry-point')
+void notificationTapBackground(NotificationResponse notificationResponse) {
+  // handle action
+}
 
+//////////////
 void main() async{
-
+/////////////////////
   await Hive.initFlutter();
   runApp(MyApp());
+//////////////////////////////////////
+// FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+//     FlutterLocalNotificationsPlugin();
+// // initialise the plugin. app_icon needs to be a added as a drawable resource to the Android head project
+// const AndroidInitializationSettings initializationSettingsAndroid =
+//     AndroidInitializationSettings('app_icon');
+// //////////////////
+
+// final InitializationSettings initializationSettings = InitializationSettings(
+//     android: initializationSettingsAndroid,
+//     );
+// /////////////////////
+// await flutterLocalNotificationsPlugin.initialize(
+//     initializationSettings,
+// );
+// /////////////////
+// const AndroidNotificationDetails androidNotificationDetails =
+//     AndroidNotificationDetails('your channel id', 'your channel name',
+//         channelDescription: 'your channel description',
+//         importance: Importance.max,
+//         priority: Priority.high,
+//         ticker: 'ticker');
+// const NotificationDetails notificationDetails =
+//     NotificationDetails(android: androidNotificationDetails);
+// await flutterLocalNotificationsPlugin.show(
+//     0, 'plain title', 'plain body', notificationDetails,
+//     payload: 'item x');
+
 }
 
 class MyApp extends StatefulWidget {
